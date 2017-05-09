@@ -12,11 +12,12 @@ If you are looking for your query string parameters as an object you can use the
 
 ### Usage
 ```jsx
-import { withParsedParameters } from 'react-router-query'
+import { withParsedParameters } from 'react-router-query';
+import { withRouter } from 'react-router-dom';
 
 const MyComponent = props => <div>What is a? {props.query.a}</div>;
 
-export default withParsedParameters(params => ({a: params.a}))(MyComponent);
+export default withRouter(withParsedParameters(params => ({a: params.a}))(MyComponent));
 ```
 
 ### API
@@ -78,6 +79,8 @@ import createHistory from 'history/createBrowserHistory'
 
 You can now push to history with query params!
 ```jsx
+import { withRouter } from 'react-router-dom';
+
 class MyComponent extends Component {
   constructor(props){
     super(props);
@@ -100,4 +103,22 @@ class MyComponent extends Component {
     );
   }
 }
+
+export default withRouter(MyComponent);
 ```
+
+## Development
+
+This library uses Jest for testing and Rollup for build.
+
+### Test
+
+Run tests with the `yarn test` command to run the tests with Jest.
+
+### Build - Dev
+
+Run a development build with `yarn run build`
+
+### Build - Prod
+
+Run a production build with `yarn run build-prod`
