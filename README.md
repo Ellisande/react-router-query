@@ -67,12 +67,12 @@ history.push({
 })
 ```
 
-Which is great if you want to build your own search string from a query object in every component. Luckily, if you don't you can use the `withQueryParser` to wrap your history and fix the problem.
+Which is great if you want to build your own search string from a query object in every component. Luckily, if you don't you can use the `withSearchBuilder` to wrap your history and fix the problem.
 
 ### Usage
 ```js
 import createHistory from 'history/createBrowserHistory'
-<Router history={withQueryParser(createHistory())}>
+<Router history={withSearchBuilder(createHistory())}>
   ...
 </Router>
 ```

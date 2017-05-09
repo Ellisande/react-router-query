@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 
-const withQueryParser = history => {
+const withSearchBuilder = history => {
   const oldHistory = history.push.bind(history);
   history.push = (location, ...args) => {
     const originalSearch = location.search;
@@ -14,4 +14,4 @@ const withQueryParser = history => {
   return history;
 };
 
-export default withQueryParser;
+export default withSearchBuilder;

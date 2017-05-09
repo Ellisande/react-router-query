@@ -1,4 +1,4 @@
-import withQueryParser from '../src/withQueryParser';
+import withSearchBuilder from '../src/withSearchBuilder';
 
 
 test("should parse the query section of location on a push", () => {
@@ -8,7 +8,7 @@ test("should parse the query section of location on a push", () => {
     },
   };
   const originalHistory = mockHistory;
-  const wrappedHistory = withQueryParser(originalHistory);
+  const wrappedHistory = withSearchBuilder(originalHistory);
   wrappedHistory.push({
     query: {
       a: 'b',
@@ -23,7 +23,7 @@ test("should combine any existing search query params with the query section of 
     },
   };
   const originalHistory = mockHistory;
-  const wrappedHistory = withQueryParser(originalHistory);
+  const wrappedHistory = withSearchBuilder(originalHistory);
   wrappedHistory.push({
     search: '?c=d',
     query: {
@@ -39,7 +39,7 @@ test("should do nothing if no query object is provided", () => {
     },
   };
   const originalHistory = mockHistory;
-  const wrappedHistory = withQueryParser(originalHistory);
+  const wrappedHistory = withSearchBuilder(originalHistory);
   wrappedHistory.push({
     search: '?c=d',
   });
@@ -55,7 +55,7 @@ test("should call the existing method with the same params", () => {
     },
   };
   const originalHistory = mockHistory;
-  const wrappedHistory = withQueryParser(originalHistory);
+  const wrappedHistory = withSearchBuilder(originalHistory);
   wrappedHistory.push({
     search: '?c=d',
   }, 'a', 'b', 'c');
