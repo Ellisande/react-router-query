@@ -11,14 +11,30 @@ React Router Query is a helper. As of react router 4.x it no longer parses the U
 If you are looking for your query string parameters as an object you can use the `withParsedParameters` higher order component.
 
 ### Usage
+Basic usage:
+
 ```jsx
 import { withParsedParameters } from 'react-router-query';
 import { withRouter } from 'react-router-dom';
 
 const MyComponent = props => <div>What is a? {props.query.a}</div>;
 
-export default withRouter(withParsedParameters(params => ({a: params.a}))(MyComponent));
+// The order is important here, withParsedParameters needs to be after withRouter
+export default withRouter(withParsedParameters()(MyComponent));
 ```
+
+#### Proposed
+A possible option is adding a function to combine `withRouter` and `withParsedParameters`. This would add a runtime dependency on `react-router`, but would allow for adding another component with usage like this:
+
+```jsx
+import { withParsingRouter } from 'react-router-query';
+import { withRouter } from 'react-router-dom';
+
+const MyComponent = props => <div>What is a? {props.query.a}</div>;
+
+export default withParsingRouter()(MyComponent);
+```
+
 
 ### API
 
